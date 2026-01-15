@@ -1,0 +1,43 @@
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.settings/
+
+# Temporary Files
+*.log
+*.tmp
+*.temp
+.cache/
+
+# Build Files (if you add a build process later)
+dist/
+build/
+node_modules/
+*.min.js
+*.min.css
+
+# Backup Files
+*.bak
+*.backup
+*_backup
+
+# Development Files
+.env
+.env.local
+.env.development
+.env.test
+.env.production
