@@ -83,8 +83,7 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
+    background: var(--primary-color);
     box-shadow: var(--shadow-sm);
     z-index: 1000;
     transition: var(--transition-base);
@@ -116,7 +115,7 @@ body {
 .logo-text {
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--primary-color);
+    color: white;
     letter-spacing: -0.5px;
 }
 
@@ -127,7 +126,7 @@ body {
 }
 
 .nav-links a {
-    color: var(--text-primary);
+    color: white;
     text-decoration: none;
     font-weight: 500;
     transition: color var(--transition-fast);
@@ -136,7 +135,7 @@ body {
 }
 
 .nav-links a:hover {
-    color: var(--primary-color);
+    color: rgba(255, 255, 255, 0.8);
 }
 
 /* Buttons */
@@ -158,15 +157,16 @@ body {
 }
 
 .btn-primary {
-    background: var(--primary-color);
-    color: white !important;
+    background: white;
+    color: var(--primary-color) !important;
+    border: 2px solid white;
 }
 
 .btn-primary:hover {
-    background: var(--primary-dark);
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--primary-dark) !important;
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
-    color: white !important;
 }
 
 .btn-secondary {
@@ -482,7 +482,7 @@ body {
 
 /* Footer */
 .footer {
-    background: var(--primary-dark);
+    background: var(--primary-color);
     color: white;
     padding: var(--spacing-2xl) 0 var(--spacing-lg);
 }
@@ -512,7 +512,6 @@ body {
     max-width: 40px;
     max-height: 40px;
     object-fit: contain;
-    filter: brightness(0) invert(1);
     border-radius: var(--radius-md);
 }
 
