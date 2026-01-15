@@ -27,9 +27,9 @@
     window.addEventListener('scroll', () => {
         const currentScroll = window.pageYOffset;
         
-        // Add shadow on scroll
+        // Add stronger shadow on scroll
         if (currentScroll > 10) {
-            navbar.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
+            navbar.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.3)';
         } else {
             navbar.style.boxShadow = '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)';
         }
