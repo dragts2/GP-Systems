@@ -105,7 +105,10 @@ body {
 
 .logo-img {
     height: 40px;
-    width: auto;
+    width: 40px;
+    max-width: 40px;
+    max-height: 40px;
+    object-fit: contain;
     display: block;
 }
 
@@ -503,7 +506,10 @@ body {
 
 .footer-logo {
     height: 40px;
-    width: auto;
+    width: 40px;
+    max-width: 40px;
+    max-height: 40px;
+    object-fit: contain;
     filter: brightness(0) invert(1);
 }
 
@@ -592,6 +598,9 @@ body {
     
     .logo-img {
         height: 35px;
+        width: 35px;
+        max-width: 35px;
+        max-height: 35px;
     }
     
     .logo-text {
@@ -619,6 +628,9 @@ body {
     
     .logo-img {
         height: 30px;
+        width: 30px;
+        max-width: 30px;
+        max-height: 30px;
     }
     
     .logo-text {
