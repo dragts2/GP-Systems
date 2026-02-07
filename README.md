@@ -1,8 +1,8 @@
 # GP-Systems
 the repo behind the GP Systems webpage.
 
-# Grand Pine Systems Website
-Modern, professional landing page for Grand Pine Systems - ERP solutions for Lebanese businesses.
+# GP Systems Website
+Modern, professional landing page for  GP Systems - ERP solutions for Lebanese businesses.
 
 ## 🌟 Features
 
@@ -10,7 +10,7 @@ Modern, professional landing page for Grand Pine Systems - ERP solutions for Leb
 - **Modern UI/UX**: Clean, professional design with smooth animations
 - **Performance Optimized**: Fast loading times and smooth scrolling
 - **SEO Friendly**: Proper meta tags and semantic HTML
-- **Brand Consistent**: Uses Grand Pine's color scheme (#2f3819)
+- **Brand Consistent**: Uses GP's color scheme (#2f3819)
 
 ## 📞 Support
 
@@ -20,7 +20,7 @@ For questions about:
 
 ## 📄 License
 
-© 2026 Grand Pine Systems. All rights reserved.
+© 2026 GP Systems. All rights reserved.
 
 ---
 
