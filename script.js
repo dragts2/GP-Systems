@@ -202,9 +202,10 @@
 
     // Founding Partner Program application form
     //
-    // FORM_ENDPOINT: paste your Formspree form URL here, for example
-    // 'https://formspree.io/f/abcdwxyz'. Submissions then arrive by email
-    // and in the Formspree dashboard (exportable to CSV).
+    // FORM_ENDPOINT: paste the Google Apps Script web app URL here (it ends
+    // in /exec). Each application is then added as a row in the Google
+    // Sheet and an email alert is sent. The script itself lives in
+    // apps-script/Code.gs in this repo.
     // While it is empty, submitting opens WhatsApp with the application
     // pre-filled, so the form works from day one.
     const FORM_ENDPOINT = '';
@@ -310,17 +311,25 @@
                 return;
             }
 
-            data.append('_subject', 'New Founding Partner application: ' + data.get('business'));
             submitBtn.disabled = true;
             submitBtn.textContent = 'Sending...';
+
+            // Sent as a plain form post so Google Apps Script can read the
+            // fields directly, with no cross-origin preflight request.
+            const payload = new URLSearchParams();
+            Object.keys(labels).forEach(key => {
+                payload.append(key, (data.get(key) || '').toString().trim());
+            });
+            payload.append('page', window.location.href);
 
             try {
                 const response = await fetch(FORM_ENDPOINT, {
                     method: 'POST',
-                    body: data,
-                    headers: { 'Accept': 'application/json' }
+                    body: payload
                 });
                 if (!response.ok) throw new Error('Request failed');
+                const result = await response.json();
+                if (!result || result.result !== 'success') throw new Error('Rejected');
                 showSuccess();
             } catch (err) {
                 showError('Something went wrong sending your application. You can <a href="' +
