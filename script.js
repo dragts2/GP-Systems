@@ -208,7 +208,7 @@
     // apps-script/Code.gs in this repo.
     // While it is empty, submitting opens WhatsApp with the application
     // pre-filled, so the form works from day one.
-    const FORM_ENDPOINT = '';
+    const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzNpvWjsHHJvOJjnzlgRIsmBAppxwNPfaLYuMmZ-eIIYGB6tyJUCE_BLJ5QgNtA6O4Psg/exec';
     const WHATSAPP_NUMBER = '96181209033';
 
     const partnerForm = document.getElementById('partner-form');
