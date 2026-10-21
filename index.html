@@ -20,7 +20,8 @@
                 <div class="nav-links">
                     <a href="#features">Features</a>
                     <a href="#benefits">Benefits</a>
-                    <a href="#contact" class="btn-primary">Get Started</a>
+                    <a href="#partners">Founding Partners</a>
+                    <a href="#apply" class="btn-primary">Apply Now</a>
                 </div>
             </div>
         </div>
@@ -30,6 +31,7 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
+                <a href="#partners" class="hero-badge"><span class="badge-dot"></span>Now accepting applications: Founding Partner Program</a>
                 <h1 class="hero-title">Modern ERP Solutions<br>Built for Lebanese Businesses</h1>
                 <p class="hero-subtitle">Streamline operations, boost efficiency, and grow your business with GP Systems - the comprehensive platform designed specifically for restaurants, retail, and hospitality businesses in Lebanon.</p>
                 <div class="hero-cta">
@@ -227,6 +229,149 @@
                     <div class="use-case-icon">☕</div>
                     <h3>Coffee Shops</h3>
                     <p>Handle high-volume orders, manage ingredient inventory, and keep lines moving smoothly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founding Partner Program -->
+    <section id="partners" class="partners">
+        <div class="container">
+            <div class="partners-layout">
+                <div class="partners-info">
+                    <span class="eyebrow">Founding Partner Program</span>
+                    <h2>Run your venue on GP Systems, free for 12 months</h2>
+                    <p class="partners-lead">We are opening GP Systems to a select group of restaurants, cafés and hotels across Lebanon. Selected partners get the full platform, set up by our team, at no cost. In return, they help us shape it with real feedback from a working operation.</p>
+
+                    <ul class="partner-perks">
+                        <li>
+                            <strong>The full platform</strong>
+                            <span>POS, inventory, menus, suppliers, reservations, kitchen display, and payroll built for NSSF and dual currency.</span>
+                        </li>
+                        <li>
+                            <strong>Setup and migration by our team</strong>
+                            <span>We install it, move your menus, stock and staff records, and train your team on site.</span>
+                        </li>
+                        <li>
+                            <strong>No risk to your service</strong>
+                            <span>Your current systems keep running in parallel until you are fully confident.</span>
+                        </li>
+                        <li>
+                            <strong>Direct line to the founders</strong>
+                            <span>Priority support and custom adjustments for your operation throughout the program.</span>
+                        </li>
+                    </ul>
+
+                    <div class="partners-steps">
+                        <h3>How it works</h3>
+                        <ol>
+                            <li><span>1</span>Apply with the short form</li>
+                            <li><span>2</span>We review every application</li>
+                            <li><span>3</span>Selected venues get a visit and walkthrough</li>
+                        </ol>
+                        <p class="partners-note">Places are limited. Applying does not commit you to anything.</p>
+                    </div>
+                </div>
+
+                <div class="apply-card" id="apply">
+                    <h3>Apply to the program</h3>
+                    <p class="apply-sub">Takes under a minute. We will contact you on WhatsApp.</p>
+
+                    <form id="partner-form" novalidate>
+                        <div class="field">
+                            <label for="f-business">Business name</label>
+                            <input type="text" id="f-business" name="business" autocomplete="organization" required>
+                        </div>
+
+                        <div class="field-row">
+                            <div class="field">
+                                <label for="f-contact">Contact name</label>
+                                <input type="text" id="f-contact" name="contact_name" autocomplete="name" required>
+                            </div>
+                            <div class="field">
+                                <label for="f-role">Role</label>
+                                <select id="f-role" name="role" required>
+                                    <option value="" disabled selected>Select</option>
+                                    <option>Owner</option>
+                                    <option>General manager</option>
+                                    <option>Operations or F&amp;B manager</option>
+                                    <option>Accountant</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="f-phone">Phone (WhatsApp)</label>
+                            <input type="tel" id="f-phone" name="phone" autocomplete="tel" placeholder="+961 70 123 456" required>
+                        </div>
+
+                        <div class="field">
+                            <label for="f-type">Type of venue</label>
+                            <select id="f-type" name="venue_type" required>
+                                <option value="" disabled selected>Select</option>
+                                <option>Restaurant</option>
+                                <option>Café or coffee shop</option>
+                                <option>Bar or nightlife</option>
+                                <option>Pastry or bakery</option>
+                                <option>Hotel or resort</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+
+                        <div class="field-row">
+                            <div class="field">
+                                <label for="f-governorate">Governorate</label>
+                                <select id="f-governorate" name="governorate" required>
+                                    <option value="" disabled selected>Select</option>
+                                    <option>Beirut</option>
+                                    <option>Mount Lebanon</option>
+                                    <option>Keserwan-Jbeil</option>
+                                    <option>North</option>
+                                    <option>Akkar</option>
+                                    <option>Bekaa</option>
+                                    <option>Baalbek-Hermel</option>
+                                    <option>South</option>
+                                    <option>Nabatieh</option>
+                                </select>
+                            </div>
+                            <div class="field">
+                                <label for="f-area">Town or area</label>
+                                <input type="text" id="f-area" name="area" placeholder="e.g. Hamra, Jounieh" required>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="f-system">What do you use today?</label>
+                            <select id="f-system" name="current_system" required>
+                                <option value="" disabled selected>Select</option>
+                                <option>No system</option>
+                                <option>One system</option>
+                                <option>Several separate tools</option>
+                                <option>Paper or Excel</option>
+                            </select>
+                        </div>
+
+                        <!-- Spam trap: hidden from people, filled by bots -->
+                        <input type="text" name="_gotcha" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+                        <label class="consent">
+                            <input type="checkbox" id="f-consent" name="consent" required>
+                            <span>I agree to be contacted by GP Systems about this program.</span>
+                        </label>
+
+                        <p class="form-error" id="form-error" role="alert" hidden></p>
+
+                        <button type="submit" class="btn-submit" id="form-submit">Submit application</button>
+                    </form>
+
+                    <div class="form-success" id="form-success" hidden>
+                        <div class="success-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                        </div>
+                        <h3>Application received</h3>
+                        <p>Thank you. We review every application personally and will reach out on WhatsApp if your venue is selected.</p>
+                    </div>
                 </div>
             </div>
         </div>

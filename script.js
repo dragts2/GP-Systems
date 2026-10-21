@@ -200,6 +200,137 @@
         });
     });
 
+    // Founding Partner Program application form
+    //
+    // FORM_ENDPOINT: paste your Formspree form URL here, for example
+    // 'https://formspree.io/f/abcdwxyz'. Submissions then arrive by email
+    // and in the Formspree dashboard (exportable to CSV).
+    // While it is empty, submitting opens WhatsApp with the application
+    // pre-filled, so the form works from day one.
+    const FORM_ENDPOINT = '';
+    const WHATSAPP_NUMBER = '96181209033';
+
+    const partnerForm = document.getElementById('partner-form');
+
+    if (partnerForm) {
+        const errorBox = document.getElementById('form-error');
+        const successBox = document.getElementById('form-success');
+        const submitBtn = document.getElementById('form-submit');
+        const consentLabel = partnerForm.querySelector('.consent');
+
+        const labels = {
+            business: 'Business',
+            contact_name: 'Contact',
+            role: 'Role',
+            phone: 'Phone',
+            venue_type: 'Venue type',
+            governorate: 'Governorate',
+            area: 'Area',
+            current_system: 'Current system'
+        };
+
+        const showError = (message) => {
+            errorBox.innerHTML = message;
+            errorBox.hidden = false;
+        };
+
+        const validPhone = (value) => {
+            const digits = value.replace(/\D/g, '');
+            return digits.length >= 7 && digits.length <= 15;
+        };
+
+        const validate = () => {
+            let ok = true;
+            partnerForm.querySelectorAll('.field').forEach(field => {
+                const input = field.querySelector('input, select');
+                const value = (input.value || '').trim();
+                const bad = !value || (input.name === 'phone' && !validPhone(value));
+                field.classList.toggle('invalid', bad);
+                if (bad) ok = false;
+            });
+            const consent = document.getElementById('f-consent');
+            consentLabel.classList.toggle('invalid', !consent.checked);
+            if (!consent.checked) ok = false;
+            return ok;
+        };
+
+        // Clear the red outline as soon as a field is fixed
+        partnerForm.addEventListener('input', (e) => {
+            const field = e.target.closest('.field');
+            if (field) field.classList.remove('invalid');
+            if (e.target.id === 'f-consent') consentLabel.classList.remove('invalid');
+        });
+        partnerForm.addEventListener('change', (e) => {
+            const field = e.target.closest('.field');
+            if (field) field.classList.remove('invalid');
+            if (e.target.id === 'f-consent') consentLabel.classList.remove('invalid');
+        });
+
+        const buildWhatsAppUrl = (data) => {
+            const lines = ['Founding Partner Program application', ''];
+            Object.keys(labels).forEach(key => {
+                lines.push(labels[key] + ': ' + (data.get(key) || '').toString().trim());
+            });
+            return 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(lines.join('\n'));
+        };
+
+        const showSuccess = (customText, customTitle) => {
+            partnerForm.hidden = true;
+            if (customTitle) {
+                successBox.querySelector('h3').textContent = customTitle;
+            }
+            if (customText) {
+                successBox.querySelector('p').textContent = customText;
+            }
+            successBox.hidden = false;
+            successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        };
+
+        partnerForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            errorBox.hidden = true;
+
+            if (!validate()) {
+                showError('Please fill in the highlighted fields.');
+                return;
+            }
+
+            const data = new FormData(partnerForm);
+
+            // Bots fill the hidden field; pretend success and drop it
+            if ((data.get('_gotcha') || '').toString().trim()) {
+                showSuccess();
+                return;
+            }
+
+            // No form service connected yet: hand off to WhatsApp
+            if (!FORM_ENDPOINT) {
+                window.open(buildWhatsAppUrl(data), '_blank', 'noopener');
+                showSuccess('WhatsApp has opened with your application filled in. Just press send and we will get back to you.', 'Almost done');
+                return;
+            }
+
+            data.append('_subject', 'New Founding Partner application: ' + data.get('business'));
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+
+            try {
+                const response = await fetch(FORM_ENDPOINT, {
+                    method: 'POST',
+                    body: data,
+                    headers: { 'Accept': 'application/json' }
+                });
+                if (!response.ok) throw new Error('Request failed');
+                showSuccess();
+            } catch (err) {
+                showError('Something went wrong sending your application. You can <a href="' +
+                    buildWhatsAppUrl(data) + '" target="_blank" rel="noopener noreferrer">send it on WhatsApp instead</a>.');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit application';
+            }
+        });
+    }
+
     // Console branding
     console.log('%cGrand Pine Systems', 'color: #2f3819; font-size: 24px; font-weight: bold;');
     console.log('%cModern ERP Solutions for Lebanese Businesses', 'color: #6c757d; font-size: 14px;');
